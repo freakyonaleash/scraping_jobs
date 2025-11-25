@@ -1,0 +1,72 @@
+Category,Job ID,Sub ID,Budget Avg,Country Normalized,Absolute Date,Job Type,Experience Level,Skill
+DevOps & Solution Architecture,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-14T15:39:00.681Z,Fixed,Intermediate,Amazon Web Services
+DevOps & Solution Architecture,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-14T15:39:00.681Z,Fixed,Intermediate,Ansible
+DevOps & Solution Architecture,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-14T15:39:00.681Z,Fixed,Intermediate,Azure DevOps
+DevOps & Solution Architecture,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-14T15:39:00.681Z,Fixed,Intermediate,DevOps
+DevOps & Solution Architecture,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-14T15:39:00.681Z,Fixed,Intermediate,Microsoft Azure
+DevOps & Solution Architecture,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-14T15:39:00.681Z,Fixed,Intermediate,Terraform
+Web Development,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-02T16:30:00.102Z,Fixed,Intermediate,API
+Web Development,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-02T16:30:00.102Z,Fixed,Intermediate,Angular
+Web Development,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-02T16:30:00.102Z,Fixed,Intermediate,AngularJS
+Web Development,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-02T16:30:00.102Z,Fixed,Intermediate,Java
+Web Development,1.9740868571948275e+18,~021974086857194827430,800.0,nan,2025-10-02T16:30:00.102Z,Fixed,Intermediate,Spring Boot
+Desktop Application Development,1.9756418772729288e+18,~021975641877272928890,,Ukraine,2025-10-07T19:18:24.088Z,Fixed,Intermediate,C++
+Desktop Application Development,1.9756418772729288e+18,~021975641877272928890,,Ukraine,2025-10-07T19:18:24.088Z,Fixed,Intermediate,Chromium
+Desktop Application Development,1.9756418772729288e+18,~021975641877272928890,,Ukraine,2025-10-07T19:18:24.088Z,Fixed,Intermediate,JavaScript
+Desktop Application Development,1.9756418772729288e+18,~021975641877272928890,,Ukraine,2025-10-07T19:18:24.088Z,Fixed,Intermediate,Node.js
+Web Development,1.9756418772729288e+18,~021975641877272928890,,Ukraine,2025-10-07T19:18:24.088Z,Fixed,Intermediate,C++
+Web Development,1.9756418772729288e+18,~021975641877272928890,,Ukraine,2025-10-07T19:18:24.088Z,Fixed,Intermediate,Chromium
+Web Development,1.9756418772729288e+18,~021975641877272928890,,Ukraine,2025-10-07T19:18:24.088Z,Fixed,Intermediate,JavaScript
+Web Development,1.9756418772729288e+18,~021975641877272928890,,Ukraine,2025-10-07T19:18:24.088Z,Fixed,Intermediate,Node.js
+Web Development,1.9756418772729288e+18,~021975641877272928890,,Ukraine,2025-10-07T19:18:24.088Z,Fixed,Intermediate,TypeScript
+AI Apps & Integration,1.9787475748485745e+18,~021978747574848574278,,Pakistan,2025-10-19T01:46:00.979Z,Hourly,Intermediate,AI Agent Development
+AI Apps & Integration,1.9787475748485745e+18,~021978747574848574278,,Pakistan,2025-10-19T01:46:00.979Z,Hourly,Intermediate,OpenAI API
+AI Apps & Integration,1.9787475748485745e+18,~021978747574848574278,,Pakistan,2025-10-19T01:46:00.979Z,Hourly,Intermediate,n8n
+Mobile Development,1.9787475748485745e+18,~021978747574848574278,17.5,Pakistan,2025-10-16T08:59:20.086Z,Hourly,Intermediate,FlutterFlow
+Ecommerce Development,1.98e+18,~021976269079776960000,500.0,Netherlands,2025-10-09T12:50:40.800Z,Fixed,Intermediate,CSS
+Ecommerce Development,1.98e+18,~021976269079776960000,500.0,Netherlands,2025-10-09T12:50:40.800Z,Fixed,Intermediate,HTML
+Ecommerce Development,1.98e+18,~021976269079776960000,500.0,Netherlands,2025-10-09T12:50:40.800Z,Fixed,Intermediate,JavaScript
+Ecommerce Development,1.98e+18,~021976269079776960000,500.0,Netherlands,2025-10-09T12:50:40.800Z,Fixed,Intermediate,PHP
+Ecommerce Development,1.98e+18,~021976269079776960000,500.0,Netherlands,2025-10-09T12:50:40.800Z,Fixed,Intermediate,Shopware
+Ecommerce Development,1.98e+18,~021982938852227950000,20.0,United States,2025-10-27T22:33:58.450Z,Hourly,Intermediate,Ecommerce Website
+Ecommerce Development,1.98e+18,~021982938852227950000,20.0,United States,2025-10-27T22:33:58.450Z,Hourly,Intermediate,Web Design
+Mobile Development,1.98e+18,~021977371130531520000,,United Kingdom,2025-10-12T13:49:50.206Z,Hourly,Intermediate,Android
+Mobile Development,1.98e+18,~021977371130531520000,,United Kingdom,2025-10-12T13:49:50.206Z,Hourly,Intermediate,Android
+Mobile Development,1.98e+18,~021977371130531520000,,United Kingdom,2025-10-12T13:49:50.206Z,Hourly,Intermediate,Smartphone
+Mobile Development,1.98e+18,~021977371130531520000,,United Kingdom,2025-10-12T13:49:50.206Z,Hourly,Intermediate,Smartphone
+Mobile Development,1.98e+18,~021977371130531520000,,United Kingdom,2025-10-12T13:49:50.206Z,Hourly,Intermediate,iOS
+Mobile Development,1.98e+18,~021977371130531520000,,United Kingdom,2025-10-12T13:49:50.206Z,Hourly,Intermediate,iOS
+Scripts & Utilities,1.98e+18,~021982697802955630000,20.0,United States,2025-10-27T06:36:07.840Z,Fixed,Intermediate,API Integration
+Scripts & Utilities,1.98e+18,~021982697802955630000,20.0,United States,2025-10-27T06:36:07.840Z,Fixed,Intermediate,Forex Trading
+Scripts & Utilities,1.98e+18,~021982697802955630000,20.0,United States,2025-10-27T06:36:07.840Z,Fixed,Intermediate,Node.js
+Scripts & Utilities,1.98e+18,~021982697802955630000,20.0,United States,2025-10-27T06:36:07.840Z,Fixed,Intermediate,Python
+Scripts & Utilities,1.98e+18,~021982697802955630000,20.0,United States,2025-10-27T06:36:07.840Z,Fixed,Intermediate,Trading Automation
+Web & Mobile Design,1.98e+18,~021977876599213760000,32.5,United States,2025-10-13T23:18:23.223Z,Hourly,Intermediate,HTML5
+Web & Mobile Design,1.98e+18,~021977876599213760000,32.5,United States,2025-10-13T23:18:23.223Z,Hourly,Intermediate,Web Design
+Web & Mobile Design,1.98e+18,~021977876599213760000,32.5,United States,2025-10-13T23:18:23.223Z,Hourly,Intermediate,Web Development
+Web & Mobile Design,1.98e+18,~021977876599213760000,32.5,United States,2025-10-13T23:18:23.223Z,Hourly,Intermediate,Wix
+Web Development,1.98e+18,~021983278908046190000,,United States,2025-10-28T21:05:14.099Z,Fixed,Intermediate,CSS 3
+Web Development,1.98e+18,~021983278908046190000,,United States,2025-10-28T21:05:14.099Z,Fixed,Intermediate,HTML5
+Web Development,1.98e+18,~021983278908046190000,,United States,2025-10-28T21:05:14.099Z,Fixed,Intermediate,JavaScript
+Web Development,1.98e+18,~021983278908046190000,,United States,2025-10-28T21:05:14.099Z,Fixed,Intermediate,PHP
+Web Development,1.98e+18,~021976639615078080000,,Philippines,2025-10-10T13:23:03.307Z,Hourly,Intermediate,3D Design
+Web Development,1.98e+18,~021976639615078080000,,Philippines,2025-10-10T13:23:03.307Z,Hourly,Intermediate,Illustration
+Web Development,1.98e+18,~021976639615078080000,,Philippines,2025-10-10T13:23:03.307Z,Hourly,Intermediate,Web Application
+Ecommerce Development,1.981014048779932e+18,~021981014048779931762,,India,2025-10-22T15:05:29.587Z,Fixed,Expert,No-Code Development
+Ecommerce Development,1.981014048779932e+18,~021981014048779931762,,India,2025-10-22T15:05:29.587Z,Fixed,Expert,Progressive Web App
+Mobile Development,1.981014048779932e+18,~021981014048779931762,,India,2025-10-21T21:36:00.106Z,Fixed,Expert,No-Code Development
+Mobile Development,1.981014048779932e+18,~021981014048779931762,,India,2025-10-21T21:36:00.106Z,Fixed,Expert,Progressive Web App
+Desktop Application Development,1.9835453016052813e+18,~021983545301605281481,700.0,United Kingdom,2025-10-29T14:43:47.316Z,Fixed,Intermediate,HTML5
+Desktop Application Development,1.9835453016052813e+18,~021983545301605281481,700.0,United Kingdom,2025-10-29T14:43:47.316Z,Fixed,Intermediate,Java
+Desktop Application Development,1.9835453016052813e+18,~021983545301605281481,700.0,United Kingdom,2025-10-29T14:43:47.316Z,Fixed,Intermediate,JavaScript
+Desktop Application Development,1.9835453016052813e+18,~021983545301605281481,700.0,United Kingdom,2025-10-29T14:43:47.316Z,Fixed,Intermediate,PHP
+QA Testing,1.9835453016052813e+18,~021983545301605281481,700.0,United Kingdom,2025-10-29T14:43:47.316Z,Fixed,Intermediate,HTML5
+QA Testing,1.9835453016052813e+18,~021983545301605281481,700.0,United Kingdom,2025-10-29T14:43:47.316Z,Fixed,Intermediate,Java
+QA Testing,1.9835453016052813e+18,~021983545301605281481,700.0,United Kingdom,2025-10-29T14:43:47.316Z,Fixed,Intermediate,JavaScript
+QA Testing,1.9835453016052813e+18,~021983545301605281481,700.0,United Kingdom,2025-10-29T14:43:47.316Z,Fixed,Intermediate,PHP
+Ecommerce Development,1.9872774257320504e+18,~021987277425732050218,,United States,2025-11-08T21:53:55.092Z,Fixed,Expert,Elementor
+Ecommerce Development,1.9872774257320504e+18,~021987277425732050218,,United States,2025-11-08T21:53:55.092Z,Fixed,Expert,Web Design
+Ecommerce Development,1.9872774257320504e+18,~021987277425732050218,,United States,2025-11-08T21:53:55.092Z,Fixed,Expert,WordPress
+Web Development,1.9872774257320504e+18,~021987277425732050218,,United States,2025-11-05T16:16:00.468Z,Fixed,Expert,Elementor
+Web Development,1.9872774257320504e+18,~021987277425732050218,,United States,2025-11-05T16:16:00.468Z,Fixed,Expert,Web Design
+Web Development,1.9872774257320504e+18,~021987277425732050218,,United States,2025-11-05T16:16:00.468Z,Fixed,Expert,WordPress
