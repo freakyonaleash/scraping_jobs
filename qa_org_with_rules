@@ -6,6 +6,7 @@ INPUT_FILE = "CleanData.csv"
 OUTPUT_FILE = "QA_OrgOnly.csv"
 QA_CATEGORY_VALUE = "QA Testing"
 
+# Names we never treat as client orgs
 ORG_BLOCKLIST = {
     "upwork", "google", "gmail", "notion", "jira", "atlassian", "github",
     "figma", "stripe", "paypal", "braintree", "facebook", "instagram",
@@ -13,6 +14,7 @@ ORG_BLOCKLIST = {
     "lego", "bricklink", "rebrickable", "sap business one",
 }
 
+# Domains we never treat as client orgs for the client org field
 DOMAIN_BLOCKLIST = {
     "upwork.com", "google.com", "gmail.com", "docs.google.com",
     "notion.so", "jira.com", "atlassian.com", "github.com",
@@ -57,21 +59,27 @@ def normalize_org_name(raw: str):
         return ""
     name = raw.strip()
 
+    # drop surrounding quotes
     if (name.startswith('"') and name.endswith('"')) or (name.startswith("'") and name.endswith("'")):
         name = name[1:-1].strip()
 
+    # if there is parentheses, keep text before them
     if "(" in name and ")" in name:
         before_paren = name.split("(", 1)[0].strip()
         if before_paren:
             name = before_paren
 
     name = name.lower().strip()
+
+    # remove trailing punctuation
     name = name.rstrip(".,;: ")
 
+    # strip company suffixes
     for suf in COMPANY_SUFFIXES:
         if name.endswith(suf):
             name = name[: -len(suf)].rstrip()
 
+    # fix spaced TLDs
     replacements = [
         (" .ai", ".ai"), (". ai", ".ai"),
         (" .io", ".io"), (". io", ".io"),
@@ -81,6 +89,7 @@ def normalize_org_name(raw: str):
     for old, new in replacements:
         name = name.replace(old, new)
 
+    # collapse spaces
     name = re.sub(r"\s+", " ", name)
     return name
 
@@ -96,6 +105,7 @@ def looks_like_org_token(token: str):
         return False
     if not re.search(r"[a-zA-Z]", t):
         return False
+    # either capitalized or looks like a brand or domain
     if t[0].isupper() or any(
         ext in t.lower()
         for ext in [".ai", ".io", ".co", ".it", "labs", "studio", "consulting", "digital"]
@@ -104,26 +114,11 @@ def looks_like_org_token(token: str):
     return False
 
 
-def org_from_header_lines(description: str):
-    if not description:
-        return None, "none", None
-    lines = [ln.strip() for ln in description.splitlines()]
-    non_empty = [ln for ln in lines if ln]
-    for ln in non_empty[:6]:
-        if ln.lower() in {"about us", "summary"}:
-            break
-        parts = ln.split()
-        if 1 <= len(parts) <= 3:
-            if ln.lower() in {"remote", "full time", "full time remote", "job summary"}:
-                continue
-            if looks_like_org_token(parts[0]):
-                return ln, "high", "header"
-    return None, "none", None
-
-
 def org_from_is_company_pattern(text: str):
     """
-    X is a / is an / is the ... company / agency / platform / marketplace / startup / consulting firm
+    X is a company or platform etc.
+    Example:
+      RedTap is a specialized consulting firm...
     """
     pattern = re.compile(
         r"\b([A-Z][\w.& ]{0,40})\s+is\s+(?:a|an|the)\s+([a-z ]{2,40})\b",
@@ -144,7 +139,10 @@ def org_from_is_company_pattern(text: str):
 
 def org_from_is_plain_pattern(text: str):
     """
-    X is verbing... with no explicit "company" word, used for cases like "TradeCafe is revolutionizing..."
+    X is verbing...
+    Example:
+      TradeCafe is revolutionizing...
+      Contour Education is reshaping...
     """
     pattern = re.compile(r"\b([A-Z][\w.& ]{0,40})\s+is\s+[a-z]", flags=re.MULTILINE)
     for m in pattern.finditer(text):
@@ -156,6 +154,9 @@ def org_from_is_plain_pattern(text: str):
 
 
 def org_from_at_pattern(text: str):
+    """
+    At X, we...
+    """
     m = re.search(r"\bAt\s+(.{1,40}?),\s+we\b", text)
     if m:
         candidate = m.group(1).strip()
@@ -175,6 +176,11 @@ LOOKING_PHRASES = [
 
 
 def org_from_seeking_pattern(text: str):
+    """
+    X is seeking, X is looking, etc.
+    Example:
+      ModMarket is seeking experienced QA experts...
+    """
     low = text.lower()
     for phrase in LOOKING_PHRASES:
         idx = low.find(phrase)
@@ -185,6 +191,7 @@ def org_from_seeking_pattern(text: str):
         tokens = before_tail.split()
         if not tokens:
             continue
+        # drop leading "We", "Our"
         while tokens and tokens[0].lower() in {"we", "our"}:
             tokens = tokens[1:]
         if not tokens:
@@ -197,6 +204,9 @@ def org_from_seeking_pattern(text: str):
 
 
 def org_from_our_company_pattern(text: str):
+    """
+    Our company X, Our agency X, etc.
+    """
     m = re.search(r"Our (company|agency|firm)\s+([A-Z][^,\.]+)", text)
     if m:
         candidate = m.group(2).strip(" ,.")
@@ -213,6 +223,11 @@ def org_from_our_company_pattern(text: str):
 
 
 def org_from_we_are_pattern(text: str):
+    """
+    We are X, ...
+    Example:
+      We are SocialToast.ai, one of...
+    """
     m = re.search(r"We are\s+(.{1,40}?)[,\.]", text)
     if m:
         candidate = m.group(1).strip()
@@ -224,20 +239,20 @@ def org_from_we_are_pattern(text: str):
 
 def org_from_website_pattern(text: str):
     """
-    Very strict website pattern:
-    only use a domain as client org if there is "our app/our website/our platform/our product"
-    within ±120 chars of that URL.
+    Strict website based client org:
+    Only accept domain as org if within a small window we see:
+      "our app", "our website", "our platform", "our product", "our site"
     """
     if not text:
         return None, "none", None
 
     urls = extract_urls(text)
     low = text.lower()
+
     for url in urls:
         domain = domain_from_url(url)
         if not domain or domain in DOMAIN_BLOCKLIST:
             continue
-        sld = domain.split(".")[0]
         idx = low.find(url.lower())
         if idx == -1:
             idx = low.find(domain)
@@ -255,6 +270,7 @@ def org_from_website_pattern(text: str):
         norm = normalize_org_name(candidate)
         if norm and norm not in ORG_BLOCKLIST:
             return candidate, "medium", "website"
+
     return None, "none", None
 
 
@@ -272,25 +288,43 @@ def classify_org_type(full_text: str, org_name_norm: str, confidence: str):
 
 
 def extract_org_fields(title: str, description: str):
+    """
+    Main entry: returns OrgNameRaw, OrgNameNormalized, OrgConfidence, OrgType, OrgSource
+    """
     title = title or ""
     desc = description or ""
     full_text = (title + "\n" + desc).strip()
     if not full_text:
         return "", "", "none", "individual_or_undefined", "none"
 
-    org_raw, org_conf, org_source = org_from_header_lines(desc)
-    if not org_raw:
-        org_raw, org_conf, org_source = org_from_is_company_pattern(full_text)
+    org_raw = ""
+    org_conf = "none"
+    org_source = "none"
+
+    # 1) "X is a/an/the company/agency/platform/marketplace/startup/consulting firm/software"
+    org_raw, org_conf, org_source = org_from_is_company_pattern(full_text)
+
+    # 2) "At X, we ..."
     if not org_raw:
         org_raw, org_conf, org_source = org_from_at_pattern(full_text)
+
+    # 3) "X is seeking / looking / hiring ..."
     if not org_raw:
         org_raw, org_conf, org_source = org_from_seeking_pattern(full_text)
+
+    # 4) "Our company/agency/firm X ..."
     if not org_raw:
         org_raw, org_conf, org_source = org_from_our_company_pattern(full_text)
+
+    # 5) "We are X, ..."
     if not org_raw:
         org_raw, org_conf, org_source = org_from_we_are_pattern(full_text)
+
+    # 6) generic "X is verbing..."
     if not org_raw:
         org_raw, org_conf, org_source = org_from_is_plain_pattern(full_text)
+
+    # 7) strict website pattern
     if not org_raw:
         org_raw, org_conf, org_source = org_from_website_pattern(full_text)
 
@@ -352,3 +386,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
